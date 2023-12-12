@@ -1,9 +1,22 @@
 import { useState } from "react";
 import { Button, Input } from "../../components";
+import { useNavigate } from "react-router-dom";
+
 import "./index.css";
 
 export const HomeScreen = () => {
-  const [username, setUsername] = useState<string>();
+  const [username, setUsername] = useState<string>("");
+  const navigate = useNavigate();
+
+  const onClickContinue = () => {
+    if (username?.length < 3) {
+      alert("Username deve conter mais que 3 caracteres!");
+      return;
+    }
+
+    localStorage.setItem("@supermarket-list:username", username);
+    navigate("/list");
+  };
 
   return (
     <div className="home-screen-container">
@@ -25,7 +38,7 @@ export const HomeScreen = () => {
           placeholder="Ex: usuario1"
         />
         <div className="home-screen-button-container">
-          <Button>Continuar</Button>
+          <Button onClick={onClickContinue}>Continuar</Button>
         </div>
       </div>
     </div>
