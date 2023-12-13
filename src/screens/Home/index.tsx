@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Input } from "../../components";
 import { useNavigate } from "react-router-dom";
+import { SAVE_USERNAME_PATH } from "../../services/constants";
 
 import "./index.css";
 
@@ -14,7 +15,7 @@ export const HomeScreen = () => {
       return;
     }
 
-    localStorage.setItem("@supermarket-list:username", username);
+    localStorage.setItem(SAVE_USERNAME_PATH, username);
     navigate("/list");
   };
 
