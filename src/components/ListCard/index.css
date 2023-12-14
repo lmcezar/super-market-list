@@ -1,7 +1,24 @@
 .list-card-container {
-  width: 9334px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 732px;
   height: 58px;
+  padding: 0 12px;
   background-color: #7785db;
   border-radius: 12px;
   margin-bottom: 24px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  cursor: pointer;
+  margin-right: 12px;
 }

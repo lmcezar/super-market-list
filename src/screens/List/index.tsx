@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getList } from "../../services/requests";
-import { ListCard } from "../../components";
+import { ListCard, Loader, ListRender, Button } from "../../components";
 
 import "./index.css";
 
@@ -28,24 +28,21 @@ export const ListScreen = () => {
     <div className="list-screen-container">
       <div className="list-screen-content-container">
         <div className="list-screen-header">
-          <img
-            className="logo-image"
-            src="/images/logo.png"
-            alt="supermarket-list-logo"
-          />
-          <h1>Lista Supermercado</h1>
+          <div className="list-screen-title-container">
+            <img
+              className="logo-image"
+              src="/images/logo.png"
+              alt="supermarket-list-logo"
+            />
+            <h1 className="list-screen-header-title">Lista Supermercado</h1>
+          </div>
+          <div className="list-screen-header-button-container">
+            <Button>Adicionar</Button>
+          </div>
         </div>
 
         <div className="list-screen-list-container">
-          {loading && <h3>Carregando...</h3>}
-          {!loading && listItems?.length > 0 ? (
-            listItems?.map((item) => <ListCard key={item._id} item={item} />)
-          ) : (
-            <h3>
-              Sua lista está vazia, por favor adicione um novo item clicando no
-              botão adicionar
-            </h3>
-          )}
+          {loading ? <Loader /> : <ListRender list={listItems} />}
         </div>
       </div>
     </div>
