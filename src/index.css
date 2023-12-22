@@ -7,6 +7,12 @@
   src: url("/public/fonts/AvenirNext-Bold.otf");
   font-weight: bold;
 }
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("/public/fonts/AvenirNext-Medium.ttf");
+  font-weight: 500;
+}
 @font-face {
   font-family: "Avenir Next";
   src: url("/public/fonts/AvenirNext-It.otf");
@@ -32,4 +38,9 @@ h3 {
   font-weight: 500;
   margin: 0;
   padding: 0;
+}
+
+::-webkit-scrollbar {
+  visibility: hidden;
+  width: 0;
 }

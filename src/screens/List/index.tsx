@@ -24,6 +24,7 @@ export const ListScreen = () => {
   useEffect(() => {
     loadListItems();
   }, []);
+
   return (
     <div className="list-screen-container">
       <div className="list-screen-content-container">

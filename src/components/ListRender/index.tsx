@@ -1,8 +1,11 @@
 import { ListCard } from "../ListCard";
+import "./index.css";
 
 interface IItemList {
   _id: string;
   name: string;
+  quantity: number;
+  checked: boolean;
 }
 
 export const ListRender = ({ list }: { list: IItemList[] }) => {
@@ -15,7 +18,7 @@ export const ListRender = ({ list }: { list: IItemList[] }) => {
     );
   }
   return (
-    <div>
+    <div className="list-render-container">
       {list.map((item) => (
         <ListCard key={item?._id} item={item} />
       ))}
