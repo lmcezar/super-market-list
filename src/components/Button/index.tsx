@@ -2,7 +2,7 @@ import "./index.css";
 
 interface IProps {
   children: string;
-  onClick: () => React.MouseEventHandler<HTMLButtonElement>;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export const Button = ({ children, onClick }: IProps) => {

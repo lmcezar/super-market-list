@@ -33,10 +33,11 @@ export const HomeScreen = () => {
           Digite abaixo seu usuário para ter acesso a sua lista de compras:
         </h3>
         <Input
-          handleUsernameChange={(text: string) => setUsername(text)}
+          handleChange={(text: string) => setUsername(text)}
           value={username}
           label="Username"
           placeholder="Ex: usuario1"
+          type="text"
         />
         <div className="home-screen-button-container">
           <Button onClick={onClickContinue}>Continuar</Button>

@@ -1,22 +1,24 @@
 import { useEffect, useState } from "react";
 import { getList } from "../../services/requests";
-import { ListCard, Loader, ListRender, Button } from "../../components";
+import { Loader, ListRender, Button, Modal } from "../../components";
 
 import "./index.css";
 
 interface IListItem {
   name: string;
   _id: string;
+  quantity: number;
+  checked: boolean;
 }
 
 export const ListScreen = () => {
+  const [modalVisible, setModalVisible] = useState(false);
   const [loading, setLoading] = useState(true);
   const [listItems, setListItems] = useState<IListItem[]>([]);
 
   const loadListItems = async () => {
     setLoading(true);
     const result = await getList();
-    console.log({ result });
     setListItems(result);
     setLoading(false);
   };
@@ -24,6 +26,14 @@ export const ListScreen = () => {
   useEffect(() => {
     loadListItems();
   }, []);
+
+  const onClickAddButton = () => {
+    setModalVisible(true);
+  };
+
+  const onCloseModal = () => {
+    setModalVisible(false);
+  };
 
   return (
     <div className="list-screen-container">
@@ -38,7 +48,7 @@ export const ListScreen = () => {
             <h1 className="list-screen-header-title">Lista Supermercado</h1>
           </div>
           <div className="list-screen-header-button-container">
-            <Button>Adicionar</Button>
+            <Button onClick={onClickAddButton}>Adicionar</Button>
           </div>
         </div>
 
@@ -46,6 +56,8 @@ export const ListScreen = () => {
           {loading ? <Loader /> : <ListRender list={listItems} />}
         </div>
       </div>
+
+      {modalVisible && <Modal onClose={onCloseModal} />}
     </div>
   );
 };

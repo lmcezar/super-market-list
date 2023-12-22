@@ -1,24 +1,26 @@
 import "./index.css";
 
-interface IUsernameProps {
+interface IInputProps {
   label: string;
-  placeholder: string;
-  value?: string;
-  handleUsernameChange: (text: string) => void;
+  placeholder?: string;
+  value?: string | number;
+  handleChange: (text: string) => void;
+  type: string;
 }
 export const Input = ({
   label,
   placeholder,
   value,
-  handleUsernameChange,
-}: IUsernameProps) => {
+  handleChange,
+  type = "text",
+}: IInputProps) => {
   return (
     <div className="input-container">
       <span className="input-label">{label}</span>
       <input
-        onChange={(e) => handleUsernameChange(e.target.value)}
+        onChange={(e) => handleChange(e.target.value)}
         value={value || ""}
-        type="text"
+        type={type}
         className="input"
         placeholder={placeholder}
       />

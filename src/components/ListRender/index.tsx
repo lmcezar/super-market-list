@@ -1,14 +1,16 @@
 import { ListCard } from "../ListCard";
 import "./index.css";
 
-interface IItemList {
-  _id: string;
-  name: string;
-  quantity: number;
-  checked: boolean;
+interface IProps {
+  list: {
+    name: string;
+    _id: string;
+    quantity: number;
+    checked: boolean;
+  }[];
 }
 
-export const ListRender = ({ list }: { list: IItemList[] }) => {
+export const ListRender = ({ list }: IProps) => {
   if (list?.length == 0) {
     return (
       <h3>
